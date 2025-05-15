@@ -38,7 +38,7 @@ The **MCP** module (Multi-Class Predictor) is the core intelligence engine of th
 
 ## 📊 Workflow Overview
 
-```mermaid
+```
 graph TD
     A[Customer Ticket Input] --> B[Streamlit Form]
     B --> C[MCP Server - NLP & Classification]
