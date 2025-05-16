@@ -78,7 +78,49 @@ pip install -r requirements.txt
 - Add your OpenAI API keys in a `.env` file or as environment variables.
 
 ---
+## 🚀 MCP Setup with UV
 
+### Project Initialization (UV-managed):
+
+```bash
+uv init mcp-server-demo
+cd mcp-server-demo
+uv add "mcp[cli]"
+```
+
+### Alternatively (pip install):
+
+```bash
+pip install "mcp[cli]"
+```
+
+### Running MCP Tools:
+
+To run the `mcp` command with UV:
+
+```bash
+uv run mcp
+```
+
+Install the server in Claude Desktop and run it:
+
+[Download Claude](https://claude.ai/download)
+
+```bash
+mcp install main.py
+```
+
+Test it with MCP Inspector:
+
+```bash
+mcp dev main.py
+```
+
+**Alternate Inspector Command (used during recording):**
+
+```bash
+npx @modelcontextprotocol/inspector python main.py
+```
 ## ▶️ Run the App
 
 ```bash
@@ -100,7 +142,8 @@ This opens the app in your browser at `http://localhost:8501`.
 
 ![Analysis Result](https://github.com/Tanujkumar24/CUSTOMER_TICKET_RESOLVER_WITH_AI/blob/main/Screenshot%20(224).png)
 *AI-generated summary and suggested resolution*
-
+![MCP Results](https://github.com/Tanujkumar24/CUSTOMER_TICKET_RESOLVER_WITH_AI/blob/main/Screenshot%20(225).png)
+![MCP Results](https://github.com/Tanujkumar24/CUSTOMER_TICKET_RESOLVER_WITH_AI/blob/main/Screenshot%20(226).png)
 ---
 
 ## 🌐 Deployment
