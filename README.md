@@ -24,7 +24,70 @@ The **MCP** module (Multi-Class Predictor) is the core intelligence engine of th
 > The MCP runs as a backend model server (`mcp_server.py`) that takes ticket inputs and returns structured insights.
 
 ---
+## 📊 Workflow Overview
 
+```mermaid
+flowchart TD
+    %% Presentation Layer
+    subgraph "Presentation Layer"
+        direction TB
+        UA["User Agent (Web Browser)"]:::external
+        Streamlit["Streamlit UI\n(main.py)"]:::frontend
+    end
+
+    %% Application Layer
+    subgraph "Application Layer"
+        direction TB
+        MCP["MCP Model Server\n(mcp_server.py)"]:::backend
+        subgraph "MCP Internal"
+            direction TB
+            Classifier["Intent/Urgency Classifier\n(tools/classify_ticket.py)"]:::backend
+            ReplyGen["LLM Response Generator\n(tools/generate_reply.py)"]:::backend
+        end
+    end
+
+    %% Integration Layer
+    subgraph "Integration Layer"
+        direction TB
+        OpenAIAPI["OpenAI GPT API"]:::external
+        GoogleSheetsAPI["Google Sheets API"]:::external
+        SMTPServer["SMTP Server"]:::external
+        Creds["Google API Credentials\n(google_creds.json)"]:::external
+    end
+
+    %% Auxiliary Modules
+    subgraph "Auxiliary / Test Modules"
+        direction TB
+        RegisterT["Ticket Registration Utility\n(register_ticket.py)"]:::external
+        TestE2E["E2E/Test Script\n(test_euri.py)"]:::external
+    end
+
+    %% Data Flows
+    UA -->|"HTTP POST/GET ticket_text"| Streamlit
+    Streamlit -->|"gRPC/REST raw_text"| MCP
+    MCP -->|"function call"| Classifier
+    MCP -->|"invoke"| ReplyGen
+    ReplyGen -->|"REST reply_text"| OpenAIAPI
+    OpenAIAPI -->|"reply_text"| ReplyGen
+    ReplyGen -->|"response"| MCP
+    MCP -->|"response"| Streamlit
+
+    %% Optional Flows
+    MCP -.->|"async log_data"| SheetConnector["Google Sheets Logger\n(tools/sheet_connector.py)"]:::backend
+    SheetConnector -->|"REST log_request"| GoogleSheetsAPI
+    Streamlit -.->|"async email_data"| GmailSender["Email Sender\n(tools/gmail_sender.py)"]:::backend
+    GmailSender -->|"SMTP send"| SMTPServer
+
+    %% Configuration Link
+    Creds --> GoogleSheetsAPI
+
+    %% Styles
+    classDef frontend fill:#D0E8FF,stroke:#0066CC,color:#003366;
+    classDef backend  fill:#E6F5D0,stroke:#5C8A00,color:#3A5F00;
+    classDef external fill:#F0F0F0,stroke:#CCCCCC,color:#333333;
+    class Streamlit,UA external
+    class MCP,Classifier,ReplyGen,SheetConnector,GmailSender backend
+    class OpenAIAPI,GoogleSheetsAPI,SMTPServer,Creds external
 ## 🚀 Key Features
 
 - **AI/NLP Ticket Analysis:** Automatically extract intent, urgency, and suggest next steps.
