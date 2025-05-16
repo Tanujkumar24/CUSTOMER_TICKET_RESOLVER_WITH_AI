@@ -93,10 +93,12 @@ This opens the app in your browser at `http://localhost:8501`.
 
 > Replace the placeholder paths below with actual screenshot images from your project
 
-![Ticket Form](images/screenshot_form.png)
+![Ticket Form](https://github.com/Tanujkumar24/CUSTOMER_TICKET_RESOLVER_WITH_AI/blob/main/Screenshot%20(220).png)
+![Ticket Analyzer](https://github.com/Tanujkumar24/CUSTOMER_TICKET_RESOLVER_WITH_AI/blob/main/Screenshot%20(222).png)
+
 *Customer Ticket Submission Interface*
 
-![Analysis Result](images/screenshot_analysis.png)
+![Analysis Result](https://github.com/Tanujkumar24/CUSTOMER_TICKET_RESOLVER_WITH_AI/blob/main/Screenshot%20(224).png)
 *AI-generated summary and suggested resolution*
 
 ---
