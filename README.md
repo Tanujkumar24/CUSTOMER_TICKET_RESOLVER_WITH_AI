@@ -24,6 +24,9 @@ The **MCP** module (Multi-Class Predictor) is the core intelligence engine of th
 > The MCP runs as a backend model server (`mcp_server.py`) that takes ticket inputs and returns structured insights.
 
 ---
+## Workflow Diagram
+![workflow](https://github.com/Tanujkumar24/CUSTOMER_TICKET_RESOLVER_WITH_AI/blob/main/diagram.png)
+
 ## 🚀 Key Features
 
 - **AI/NLP Ticket Analysis:** Automatically extract intent, urgency, and suggest next steps.
