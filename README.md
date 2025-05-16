@@ -88,6 +88,8 @@ flowchart TD
     class Streamlit,UA external
     class MCP,Classifier,ReplyGen,SheetConnector,GmailSender backend
     class OpenAIAPI,GoogleSheetsAPI,SMTPServer,Creds external
+
+
 ## 🚀 Key Features
 
 - **AI/NLP Ticket Analysis:** Automatically extract intent, urgency, and suggest next steps.
