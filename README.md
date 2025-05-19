@@ -12,9 +12,9 @@ The system helps support teams become faster, more accurate, and more consistent
 
 ---
 
-## 🧠 About MCP (Multi-Class Predictor)
+## 🧠 About MCP (Model Context Protocol)
 
-The **MCP** module (Multi-Class Predictor) is the core intelligence engine of the project. It takes raw ticket input (customer issue text) and performs:
+The **MCP** module (Model Context Protocol) is the core intelligence engine of the project. It takes raw ticket input (customer issue text) and performs:
 
 1. **Intent Classification** – Understands the context or issue type.
 2. **Urgency Detection** – Predicts how urgent the ticket is.
